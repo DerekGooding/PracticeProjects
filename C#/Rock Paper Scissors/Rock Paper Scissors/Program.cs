@@ -4,8 +4,7 @@ static class Program
 {
     static string GetAiHand()
     {
-        int rndInt = Random.Shared.Next(1, 4);
-        switch (rndInt)
+        switch (Random.Shared.Next(1, 4))
         {
             case 1:
                 return "rock";
@@ -17,14 +16,13 @@ static class Program
                 throw new Exception("Computer never assigned variable hand");
         }
     }
-    
+
     static string GetPlayerHand()
     {
         while (true)
         {
             Console.Write("Enter ROCK, PAPER, or SCISSORS: ");
-            string plrInput = Console.ReadLine()!;
-            switch (plrInput.ToLower().Trim())
+            switch (Console.ReadLine()!.ToLower().Trim())
             {
                 case "rock":
                 case "r":
@@ -58,7 +56,7 @@ static class Program
         {
             Console.WriteLine("You lose");
         }
-        
+
     }
 
     static Boolean InputPlayAgain()
@@ -66,12 +64,11 @@ static class Program
         while (true)
         {
             Console.Write("Would you like to play again (Y/N): ");
-            string? plrInput = Console.ReadLine();
-            if (plrInput == null)
+            if (Console.ReadLine() == null)
             {
                 throw new Exception("InputPlayAgain plrInput variable returned null");
             }
-            switch (plrInput.ToLower().Trim())
+            switch (Console.ReadLine()?.ToLower().Trim())
             {
                 case "y":
                 case"yes":
@@ -85,7 +82,7 @@ static class Program
             Console.WriteLine("Please enter valid input n/y or no/yes");
         }
     }
-    
+
     static void Main()
     {
         do
