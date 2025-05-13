@@ -38,7 +38,8 @@ static class Program
                     return true;
                 case "n":
                 case "no":
-                    Console.Write("thanks for playing");
+                    Console.Write("thanks for playing\nPress any key to exit");
+                    Console.ReadKey();
                     return false;
             }
 
