@@ -20,10 +20,9 @@ static class Program
                 case "scissors":
                 case "s":
                     return ThrowType.Scissors;
-                default:
-                    Console.WriteLine("Invalid Input");
-                    break;
             }
+
+            Console.WriteLine("Invalid Input");
         }
     }
 
