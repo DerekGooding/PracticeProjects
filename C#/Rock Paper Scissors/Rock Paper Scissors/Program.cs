@@ -7,6 +7,26 @@ public enum ThrowType
     Scissors
 }
 
+public enum GameState
+{
+    Win,
+    Lose,
+    Draw
+}
+
+public static class ThrowTypeExtensions
+{
+    public static GameState CheckGameState(this ThrowType player, ThrowType computer) =>
+        player == computer ? GameState.Draw :
+        player.IsBeatenBy() == computer ? GameState.Lose :
+        GameState.Win;
+
+    private static ThrowType IsBeatenBy(this ThrowType throwType) =>
+        throwType == ThrowType.Rock ? ThrowType.Paper :
+        throwType == ThrowType.Paper ? ThrowType.Scissors :
+        ThrowType.Rock;
+}
+
 static class Program
 {
     static ThrowType GetAiHand() => (ThrowType)Random.Shared.Next(3);
@@ -32,25 +52,6 @@ static class Program
                     break;
             }
         }
-    }
-
-    static void CheckWinState(ThrowType player, ThrowType computer)
-    {
-        if (player == computer)
-        {
-            Console.WriteLine("It's a draw");
-        }
-        else if (player == ThrowType.Rock && computer == ThrowType.Scissors ||
-                 player == ThrowType.Paper && computer == ThrowType.Rock ||
-                 player == ThrowType.Scissors && computer == ThrowType.Paper)
-        {
-            Console.WriteLine("You win");
-        }
-        else
-        {
-            Console.WriteLine("You lose");
-        }
-
     }
 
     static bool InputPlayAgain()
@@ -81,7 +82,7 @@ static class Program
             var playerHand = GetPlayerHand();
             Console.WriteLine("Player: " + playerHand.ToString().ToUpper());
             Console.WriteLine("Computer: " + aiHand.ToString().ToUpper());
-            CheckWinState(playerHand, aiHand);
+            playerHand.CheckGameState(aiHand);
         } while (InputPlayAgain());
     }
 
