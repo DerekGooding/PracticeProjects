@@ -9,13 +9,7 @@ public enum ThrowType
 
 static class Program
 {
-    static string GetAiHand() => Random.Shared.Next(1, 4) switch
-    {
-        1 => "rock",
-        2 => "paper",
-        3 => "scissors",
-        _ => throw new Exception("Computer never assigned variable hand"),
-    };
+    static ThrowType GetAiHand() => (ThrowType)Random.Shared.Next(3);
 
     static string GetPlayerHand()
     {
