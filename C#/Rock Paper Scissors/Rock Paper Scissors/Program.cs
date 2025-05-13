@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace Rock_Paper_Scissors;
+﻿namespace Rock_Paper_Scissors;
 
 class Program
 {
