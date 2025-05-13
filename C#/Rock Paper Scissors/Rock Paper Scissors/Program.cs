@@ -15,7 +15,7 @@ static class Program
         while (true)
         {
             Console.Write("Enter ROCK, PAPER, or SCISSORS: ");
-            switch (Console.ReadLine()!.ToLower().Trim())
+            switch (Console.ReadLine()?.ToLower().Trim())
             {
                 case "rock":
                 case "r":
@@ -86,5 +86,15 @@ static class Program
             Console.WriteLine("Computer: " + aiHand.ToUpper());
             CheckWinState((playerHand, aiHand));
         } while (InputPlayAgain());
+    }
+
+    static string GetInput()
+    {
+        var result = Console.ReadLine();
+        if (result == null)
+        {
+            throw new Exception("GetInput result variable returned null");
+        }
+        return result.ToLower().Trim();
     }
 }
