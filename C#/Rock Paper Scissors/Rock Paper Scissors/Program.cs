@@ -1,5 +1,12 @@
 ﻿namespace Rock_Paper_Scissors;
 
+public enum ThrowType
+{
+    Rock,
+    Paper,
+    Scissors
+}
+
 static class Program
 {
     static string GetAiHand() => Random.Shared.Next(1, 4) switch
