@@ -1,4 +1,6 @@
-﻿namespace Rock_Paper_Scissors;
+﻿using static System.Console;
+
+namespace Rock_Paper_Scissors;
 
 static class Program
 {
@@ -8,7 +10,7 @@ static class Program
     {
         while (true)
         {
-            Console.Write("Enter ROCK, PAPER, or SCISSORS: ");
+            Write("Enter ROCK, PAPER, or SCISSORS: ");
             switch (GetInput())
             {
                 case "r" or "rock":
@@ -19,7 +21,7 @@ static class Program
                     return ThrowType.Scissors;
             }
 
-            Console.WriteLine("Invalid Input");
+            WriteLine("Invalid Input");
         }
     }
 
@@ -27,7 +29,7 @@ static class Program
     {
         while (true)
         {
-            Console.Write("Would you like to play again (Y/N): ");
+            Write("Would you like to play again (Y/N): ");
             switch (GetInput())
             {
                 case "y" or "yes":
@@ -36,7 +38,7 @@ static class Program
                     return false;
             }
 
-            Console.WriteLine("Please enter valid input n/y or no/yes");
+            WriteLine("Please enter valid input n/y or no/yes");
         }
     }
 
@@ -46,14 +48,14 @@ static class Program
         {
             var aiHand = GetAiHand();
             var playerHand = GetPlayerHand();
-            Console.WriteLine("Player: " + playerHand.ToString().ToUpper());
-            Console.WriteLine("Computer: " + aiHand.ToString().ToUpper());
+            WriteLine("Player: " + playerHand.ToString().ToUpper());
+            WriteLine("Computer: " + aiHand.ToString().ToUpper());
             playerHand.CheckGameState(aiHand);
         } while (InputPlayAgain());
 
-        Console.Write("thanks for playing\nPress any key to exit");
-        Console.ReadKey();
+        Write("thanks for playing\nPress any key to exit");
+        ReadKey();
     }
 
-    static string GetInput() => Console.ReadLine()?.ToLower().Trim() ?? throw new Exception("GetInput result variable returned null");
+    static string GetInput() => ReadLine()?.ToLower().Trim() ?? throw new Exception("GetInput result variable returned null");
 }
