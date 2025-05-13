@@ -15,7 +15,7 @@ static class Program
         while (true)
         {
             Console.Write("Enter ROCK, PAPER, or SCISSORS: ");
-            switch (Console.ReadLine()?.ToLower().Trim())
+            switch (GetInput())
             {
                 case "rock":
                 case "r":
@@ -57,11 +57,7 @@ static class Program
         while (true)
         {
             Console.Write("Would you like to play again (Y/N): ");
-            if (Console.ReadLine() == null)
-            {
-                throw new Exception("InputPlayAgain plrInput variable returned null");
-            }
-            switch (Console.ReadLine()?.ToLower().Trim())
+            switch (GetInput())
             {
                 case "y":
                 case"yes":
@@ -88,13 +84,5 @@ static class Program
         } while (InputPlayAgain());
     }
 
-    static string GetInput()
-    {
-        var result = Console.ReadLine();
-        if (result == null)
-        {
-            throw new Exception("GetInput result variable returned null");
-        }
-        return result.ToLower().Trim();
-    }
+    static string GetInput() => Console.ReadLine()?.ToLower().Trim() ?? throw new Exception("GetInput result variable returned null");
 }
