@@ -1,6 +1,6 @@
 ﻿namespace Rock_Paper_Scissors;
 
-class Program
+static class Program
 {
     static string GetAiHand()
     {
