@@ -11,14 +11,11 @@ static class Program
             Console.Write("Enter ROCK, PAPER, or SCISSORS: ");
             switch (GetInput())
             {
-                case "rock":
-                case "r":
+                case "r" or "rock":
                     return ThrowType.Rock;
-                case "paper":
-                case "p":
+                case "p" or "paper":
                     return ThrowType.Paper;
-                case "scissors":
-                case "s":
+                case "s" or "scissors":
                     return ThrowType.Scissors;
             }
 
@@ -33,13 +30,9 @@ static class Program
             Console.Write("Would you like to play again (Y/N): ");
             switch (GetInput())
             {
-                case "y":
-                case"yes":
+                case "y" or "yes":
                     return true;
-                case "n":
-                case "no":
-                    Console.Write("thanks for playing\nPress any key to exit");
-                    Console.ReadKey();
+                case "n" or "no":
                     return false;
             }
 
@@ -57,6 +50,9 @@ static class Program
             Console.WriteLine("Computer: " + aiHand.ToString().ToUpper());
             playerHand.CheckGameState(aiHand);
         } while (InputPlayAgain());
+
+        Console.Write("thanks for playing\nPress any key to exit");
+        Console.ReadKey();
     }
 
     static string GetInput() => Console.ReadLine()?.ToLower().Trim() ?? throw new Exception("GetInput result variable returned null");
