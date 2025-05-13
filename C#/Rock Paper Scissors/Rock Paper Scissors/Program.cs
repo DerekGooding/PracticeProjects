@@ -11,7 +11,7 @@ static class Program
 {
     static ThrowType GetAiHand() => (ThrowType)Random.Shared.Next(3);
 
-    static string GetPlayerHand()
+    static ThrowType GetPlayerHand()
     {
         while (true)
         {
@@ -20,13 +20,13 @@ static class Program
             {
                 case "rock":
                 case "r":
-                    return "rock";
+                    return ThrowType.Rock;
                 case "paper":
                 case "p":
-                    return "paper";
+                    return ThrowType.Paper;
                 case "scissors":
                 case "s":
-                    return "scissors";
+                    return ThrowType.Scissors;
                 default:
                     Console.WriteLine("Invalid Input");
                     break;
@@ -34,15 +34,15 @@ static class Program
         }
     }
 
-    static void CheckWinState((string player, string computer) hands)
+    static void CheckWinState(ThrowType player, ThrowType computer)
     {
-        if (hands.player == hands.computer)
+        if (player == computer)
         {
             Console.WriteLine("It's a draw");
         }
-        else if (hands.player == "rock" && hands.computer == "scissors" ||
-                 hands.player == "paper" && hands.computer == "rock" ||
-                 hands.player == "scissors" && hands.computer == "paper")
+        else if (player == ThrowType.Rock && computer == ThrowType.Scissors ||
+                 player == ThrowType.Paper && computer == ThrowType.Rock ||
+                 player == ThrowType.Scissors && computer == ThrowType.Paper)
         {
             Console.WriteLine("You win");
         }
@@ -79,9 +79,9 @@ static class Program
         {
             var aiHand = GetAiHand();
             var playerHand = GetPlayerHand();
-            Console.WriteLine("Player: " + playerHand.ToUpper());
-            Console.WriteLine("Computer: " + aiHand.ToUpper());
-            CheckWinState((playerHand, aiHand));
+            Console.WriteLine("Player: " + playerHand.ToString().ToUpper());
+            Console.WriteLine("Computer: " + aiHand.ToString().ToUpper());
+            CheckWinState(playerHand, aiHand);
         } while (InputPlayAgain());
     }
 
