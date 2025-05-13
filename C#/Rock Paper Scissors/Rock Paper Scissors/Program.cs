@@ -6,13 +6,10 @@ static class Program
 {
     static void Main()
     {
-        do
+        while(true)
         {
             Play();
-        } while (InputPlayAgain());
-
-        Write("thanks for playing\nPress any key to exit");
-        ReadKey();
+        }
     }
 
     static void Play()
@@ -22,6 +19,8 @@ static class Program
         WriteLine($"Player: {playerHand}");
         WriteLine($"Computer: {aiHand}");
         WriteLine(playerHand.GameStateMessage(aiHand));
+
+        InputPlayAgain();
     }
     static ThrowType GetAiHand() => (ThrowType)Random.Shared.Next(3);
 
@@ -30,6 +29,7 @@ static class Program
         while (true)
         {
             Write("Enter ROCK, PAPER, or SCISSORS: ");
+
             switch (GetInput())
             {
                 case "r" or "rock":
@@ -44,21 +44,27 @@ static class Program
         }
     }
 
-    static bool InputPlayAgain()
+    static void InputPlayAgain()
     {
         while (true)
         {
             Write("Would you like to play again (Y/N): ");
-            switch (GetInput())
-            {
-                case "y" or "yes":
-                    return true;
-                case "n" or "no":
-                    return false;
-            }
+
+            var input = GetInput();
+            if (input is "y" or "yes")
+                return;
+            if (input is "n" or "no")
+                HandleExit();
 
             WriteLine("Please enter valid input n/y or no/yes");
         }
+    }
+
+    static void HandleExit()
+    {
+        Write("thanks for playing\nPress any key to exit");
+        ReadKey();
+        Environment.Exit(0);
     }
 
     static string GetInput() => ReadLine()?.ToLower().Trim() ?? throw new Exception("GetInput result variable returned null");
