@@ -4,8 +4,7 @@ static class Program
 {
     static string GetAiHand()
     {
-        Random rnd = new Random();
-        int rndInt = rnd.Next(1, 4);
+        int rndInt = Random.Shared.Next(1, 4);
         switch (rndInt)
         {
             case 1:
