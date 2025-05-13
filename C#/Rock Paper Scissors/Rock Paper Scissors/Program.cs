@@ -52,7 +52,7 @@ static class Program
 
     }
 
-    static Boolean InputPlayAgain()
+    static bool InputPlayAgain()
     {
         while (true)
         {
