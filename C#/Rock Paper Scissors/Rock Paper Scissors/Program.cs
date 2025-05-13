@@ -2,20 +2,13 @@
 
 static class Program
 {
-    static string GetAiHand()
+    static string GetAiHand() => Random.Shared.Next(1, 4) switch
     {
-        switch (Random.Shared.Next(1, 4))
-        {
-            case 1:
-                return "rock";
-            case 2:
-                return "paper";
-            case 3:
-                return "scissors";
-            default:
-                throw new Exception("Computer never assigned variable hand");
-        }
-    }
+        1 => "rock",
+        2 => "paper",
+        3 => "scissors",
+        _ => throw new Exception("Computer never assigned variable hand"),
+    };
 
     static string GetPlayerHand()
     {
