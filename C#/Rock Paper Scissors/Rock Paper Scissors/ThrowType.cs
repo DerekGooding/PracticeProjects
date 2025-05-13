@@ -2,7 +2,7 @@
 
 public enum ThrowType
 {
-    Rock,
-    Paper,
-    Scissors
+    ROCK,
+    PAPER,
+    SCISSORS,
 }

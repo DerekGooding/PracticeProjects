@@ -8,7 +8,7 @@ public static class ThrowTypeExtensions
         "You win";
 
     private static ThrowType IsBeatenBy(this ThrowType throwType) =>
-        throwType == ThrowType.Rock ? ThrowType.Paper :
-        throwType == ThrowType.Paper ? ThrowType.Scissors :
-        ThrowType.Rock;
+        throwType == ThrowType.ROCK ? ThrowType.PAPER :
+        throwType == ThrowType.PAPER ? ThrowType.SCISSORS :
+        ThrowType.ROCK;
 }
