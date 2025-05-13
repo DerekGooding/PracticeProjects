@@ -50,7 +50,7 @@ static class Program
             var playerHand = GetPlayerHand();
             WriteLine("Player: " + playerHand.ToString().ToUpper());
             WriteLine("Computer: " + aiHand.ToString().ToUpper());
-            playerHand.CheckGameState(aiHand);
+            WriteLine(playerHand.GameStateMessage(aiHand));
         } while (InputPlayAgain());
 
         Write("thanks for playing\nPress any key to exit");
